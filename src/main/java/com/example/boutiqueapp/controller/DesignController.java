@@ -28,7 +28,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 @RequestMapping("/designs")
-@CrossOrigin(origins = "http://localhost:4200") // Replace with the appropriate Angular app URL
+@CrossOrigin(origins = "http://localhost:8081") // Replace with the appropriate Angular app URL
 public class DesignController {
 	
 	@Autowired
