@@ -9,20 +9,20 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Build and SonarQube Scan') {
             steps {
-                // Build your project (e.g., compile code, run tests)
-                sh 'mvn clean install'  // Replace with your build commands mvn clean install sonar:sonar
+                // Build your project and run SonarQube analysis
+                sh 'mvn clean install sonar:sonar'  // Replace with your build and analysis commands
             }
         }
+    }
 
-	 stage('Build') {
-            steps {
-                // Build your project (e.g., compile code, run tests)
-                sh 'mvn clean install sonar:sonar'  // Replace with your build commands 
-            }
+    post {
+        success {
+            // Send notifications or perform actions on a successful build
         }
-
-       }
-
- }
+        failure {
+            // Send notifications or perform actions on a failed build
+        }
+    }
+}
