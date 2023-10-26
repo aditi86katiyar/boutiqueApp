@@ -19,7 +19,7 @@ pipeline {
                         "-Dsonar.sources=src",
                         "-Dsonar.login=admin",
                         "-Dsonar.password=admin123"
-                        // Add other properties as needed
+                        // Add otchecking pull requesther properties as needed
                     ]
 
                     sh "mvn clean install sonar:sonar ${sonarProperties.join(' ')}"
