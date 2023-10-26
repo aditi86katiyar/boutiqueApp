@@ -15,7 +15,6 @@ pipeline {
 
                     // Set the SonarQube properties
                     def sonarProperties = [
-                        "-Dsonar.projectKey=test-branch", // Use a dynamic project key with the branch name
                         "-Dsonar.sources=src",
                         "-Dsonar.login=admin",
                         "-Dsonar.password=admin123"
