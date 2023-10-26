@@ -12,7 +12,7 @@ pipeline {
         stage('Build and SonarQube Scan') {
             steps {
                 // Build your project and run SonarQube analysis
-                sh 'mvn clean install sonar:sonar'  // Replace with your build and analysis commands
+    sh 'mvn clean install sonar:sonar -Dsonar.login=admin -Dsonar.password=admin123'
             }
         }
     }
