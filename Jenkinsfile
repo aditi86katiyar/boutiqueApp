@@ -12,24 +12,17 @@ pipeline {
         stage('Build') {
             steps {
                 // Build your project (e.g., compile code, run tests)
-                sh 'mvn clean install'  // Replace with your build commands
+                sh 'mvn clean install'  // Replace with your build commands mvn clean install sonar:sonar
             }
         }
 
-        stage('SonarQube Analysis') {
+	 stage('Build') {
             steps {
-                script {
-                    // Set the SonarQube scanner configuration
-                    def scannerHome = tool name: 'SonarScanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
-                    withSonarQubeEnv('YourSonarQubeServer') {
-                        // Use 'YourSonarQubeServer' as the SonarQube server configuration name defined in Jenkins
-
-                        // Run the SonarQube scanner
-                        sh "${scannerHome}/bin/sonar-scanner"  // Adjust the path if needed
-                    }
-                }
+                // Build your project (e.g., compile code, run tests)
+                sh 'mvn clean install sonar:sonar'  // Replace with your build commands 
             }
         }
-    }
+
+       
 
  }
