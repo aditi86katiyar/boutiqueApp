@@ -15,6 +15,8 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "designs")
 public class Design {
+
+	//todo
     
 	@jakarta.persistence.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
