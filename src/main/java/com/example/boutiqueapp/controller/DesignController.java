@@ -78,21 +78,7 @@ public class DesignController {
         
     }
 	
-	@DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteItem(@PathVariable Long id) {
-        Design item = null;
-		try {
-			item = designRepository.findById(id)
-			        .orElseThrow(() -> new Exception("Item not found with id: " + id));
-	        designRepository.delete(item);
-
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-        return ResponseEntity.noContent().build();
-    }
+	
 	
 	public static void main(String args[]) throws JsonProcessingException {
 		List<Product> links=new ArrayList<>();
