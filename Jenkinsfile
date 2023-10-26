@@ -32,12 +32,4 @@ pipeline {
         }
     }
 
-    post {
-        success {
-            // Send notifications or perform actions on a successful build
-        }
-        failure {
-            // Send notifications or perform actions on a failed build
-        }
-    }
-}
+ }
