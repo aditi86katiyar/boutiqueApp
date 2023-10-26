@@ -4,7 +4,6 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Checkout your source code from your version control system
                 checkout scm
             }
         }
@@ -12,13 +11,16 @@ pipeline {
         stage('Build and SonarQube Scan') {
             steps {
                 script {
+                    // Get the branch name dynamically
+                    def branchName = sh(script: 'git rev-parse --abbrev-ref HEAD', returnStdout: true).trim()
 
                     // Set the SonarQube properties
                     def sonarProperties = [
+                        "-Dsonar.projectKey=${branchName}", // Use the branch name as the project key
                         "-Dsonar.sources=src",
                         "-Dsonar.login=admin",
                         "-Dsonar.password=admin123"
-                        // Add otchecking pull requesther properties as needed
+                        // Add other properties as needed
                     ]
 
                     sh "mvn clean install sonar:sonar ${sonarProperties.join(' ')}"
