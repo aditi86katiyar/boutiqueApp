@@ -4,7 +4,6 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Checkout your source code from your version control system
                 checkout scm
             }
         }
@@ -12,14 +11,21 @@ pipeline {
         stage('Build and SonarQube Scan') {
             steps {
                 script {
-                    def branchName = sh(script: 'git rev-parse --abbrev-ref HEAD', returnStatus: true).trim()
+                    // Get the branch name dynamically
+                    def branchName = env.BRANCH_NAME
+
+                    // Get the PR name/number (change ID)
+                    def prNumber = env.CHANGE_ID
+
+                    echo "Branch Name: ${branchName}"
+                    echo "PR Number: ${prNumber}"
 
                     // Set the SonarQube properties
                     def sonarProperties = [
-                        "-Dsonar.projectKey=my-project-${branchName}", // Use a dynamic project key with the branch name
+                        "-Dsonar.projectKey=${branchName}", // Use the branch name as the project key
                         "-Dsonar.sources=src",
                         "-Dsonar.login=admin",
-                        "-Dsonar.password=admin123"
+                        "-Dsonar.password=admin123", // Replace with your GitHub token
                         // Add other properties as needed
                     ]
 
