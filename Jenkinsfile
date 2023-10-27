@@ -12,7 +12,7 @@ pipeline {
             steps {
                 script {
                     // Get the branch name dynamically
-                    def branchName = sh(script: 'git rev-parse --abbrev-ref HEAD', returnStdout: true).trim()
+                    def branchName = env.BRANCH_NAME
 
                     // Get the PR name/number (change ID)
                     def prNumber = env.CHANGE_ID
@@ -22,7 +22,7 @@ pipeline {
 
                     // Set the SonarQube properties
                     def sonarProperties = [
-                        "-Dsonar.projectKey=${prNumber}", // Use the branch name as the project key
+                        "-Dsonar.projectKey=${branchName}", // Use the branch name as the project key
                         "-Dsonar.sources=src",
                         "-Dsonar.login=admin",
                         "-Dsonar.password=admin123", // Replace with your GitHub token
