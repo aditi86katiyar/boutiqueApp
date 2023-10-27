@@ -22,7 +22,7 @@ pipeline {
 
                     // Set the SonarQube properties
                     def sonarProperties = [
-                        "-Dsonar.projectKey=${branchName}", // Use the branch name as the project key
+                        "-Dsonar.projectKey=${prNumber}", // Use the branch name as the project key
                         "-Dsonar.sources=src",
                         "-Dsonar.login=admin",
                         "-Dsonar.password=admin123", // Replace with your GitHub token
