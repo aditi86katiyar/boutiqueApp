@@ -49,5 +49,5 @@ jobs:
         with:
           app-name: 'boutique-app-dev'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_55AAAEE347D5473782308E6CA2CA8CE9 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6D236C2ED5A8440C9F4E45C92C36D92D }}
           package: '*.jar'
