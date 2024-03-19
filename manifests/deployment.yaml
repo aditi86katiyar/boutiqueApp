@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: boutiqueappnew
+  labels:
+    app: boutiqueappnew
+  namespace: namespace-workflow-1710847867719
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: boutiqueappnew
+  template:
+    metadata:
+      labels:
+        app: boutiqueappnew
+    spec:
+      containers:
+        - name: boutiqueappnew
+          image: acrworkflow1710847867719.azurecr.io/image-workflow-1710847867719:latest
+          ports:
+            - containerPort: 8080
